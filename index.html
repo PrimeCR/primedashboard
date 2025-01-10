@@ -3,21 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard del Bot</title>
+    <title>Dashboard de Bot #1326781316586536990</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #5865F2;  /* Color de Discord */
+            --secondary-color: #2c2f33;
+            --accent-color: #99aab5;
+        }
+        
         .stat-card {
             transition: transform 0.2s;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .stat-card:hover {
             transform: translateY(-5px);
         }
         .sidebar {
             min-height: 100vh;
-            background-color: #2c3e50;
+            background-color: var(--secondary-color);
         }
         .main-content {
             background-color: #f8f9fa;
+        }
+        .bot-id {
+            font-size: 0.8rem;
+            color: var(--accent-color);
+        }
+        .nav-link {
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+        .nav-link:hover {
+            background-color: var(--primary-color);
+        }
+        .discord-card {
+            background: linear-gradient(45deg, #5865F2, #7289da);
         }
     </style>
 </head>
@@ -26,125 +48,92 @@
         <div class="row">
             <!-- Barra lateral -->
             <div class="col-md-2 sidebar text-white p-3">
-                <h3 class="mb-4">Bot Dashboard</h3>
+                <div class="d-flex align-items-center mb-4">
+                    <img src="https://cdn.discordapp.com/avatars/1326781316586536990/1326781316586536990.png" 
+                         alt="Bot Avatar" 
+                         class="rounded-circle me-2" 
+                         style="width: 40px; height: 40px;">
+                    <div>
+                        <h3 class="mb-0">Bot Dashboard</h3>
+                        <span class="bot-id">ID: 1326781316586536990</span>
+                    </div>
+                </div>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Inicio</a>
+                        <a class="nav-link text-white" href="#"><i class="fas fa-home me-2"></i>Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Estadísticas</a>
+                        <a class="nav-link text-white" href="#"><i class="fas fa-chart-bar me-2"></i>Estadísticas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Configuración</a>
+                        <a class="nav-link text-white" href="#"><i class="fas fa-cog me-2"></i>Configuración</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Usuarios</a>
+                        <a class="nav-link text-white" href="#"><i class="fas fa-users me-2"></i>Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#"><i class="fas fa-server me-2"></i>Servidores</a>
                     </li>
                 </ul>
             </div>
 
             <!-- Contenido principal -->
             <div class="col-md-10 main-content p-4">
-                <h2 class="mb-4">Panel de Control</h2>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>Panel de Control</h2>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-sync-alt me-2"></i>Actualizar Datos
+                    </button>
+                </div>
                 
                 <!-- Tarjetas de estadísticas -->
                 <div class="row mb-4">
                     <div class="col-md-3">
-                        <div class="card stat-card bg-primary text-white">
+                        <div class="card stat-card discord-card text-white">
                             <div class="card-body">
-                                <h5 class="card-title">Usuarios Activos</h5>
-                                <h2 class="card-text">1,234</h2>
+                                <h5 class="card-title"><i class="fas fa-users me-2"></i>Servidores</h5>
+                                <h2 class="card-text">42</h2>
+                                <small>↑ 5 esta semana</small>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="card stat-card bg-success text-white">
                             <div class="card-body">
-                                <h5 class="card-title">Mensajes Hoy</h5>
+                                <h5 class="card-title"><i class="fas fa-comment-alt me-2"></i>Mensajes 24h</h5>
                                 <h2 class="card-text">5,678</h2>
+                                <small>↑ 12% vs ayer</small>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="card stat-card bg-warning text-white">
                             <div class="card-body">
-                                <h5 class="card-title">Comandos Usados</h5>
+                                <h5 class="card-title"><i class="fas fa-terminal me-2"></i>Comandos</h5>
                                 <h2 class="card-text">892</h2>
+                                <small>Últimas 24 horas</small>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="card stat-card bg-danger text-white">
                             <div class="card-body">
-                                <h5 class="card-title">Errores</h5>
+                                <h5 class="card-title"><i class="fas fa-exclamation-triangle me-2"></i>Errores</h5>
                                 <h2 class="card-text">12</h2>
+                                <small>↓ 3 vs ayer</small>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Gráfico -->
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Actividad del Bot</h5>
-                                <canvas id="activityChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Comandos Populares</h5>
-                                <ul class="list-group">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        /ayuda
-                                        <span class="badge bg-primary rounded-pill">234</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        /stats
-                                        <span class="badge bg-primary rounded-pill">145</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        /perfil
-                                        <span class="badge bg-primary rounded-pill">98</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Resto del contenido... -->
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        // Configuración del gráfico
-        const ctx = document.getElementById('activityChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
-                datasets: [{
-                    label: 'Actividad Semanal',
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                    fill: false,
-                    borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
+    <!-- Scripts existentes... -->
 </body>
-</html><
+</html>
